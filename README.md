@@ -1,4 +1,4 @@
-# tfworkspace practice
+# Terraform workspace practice
 
 ## Pre-requisite
 
