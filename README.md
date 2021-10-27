@@ -5,7 +5,7 @@
 * [IBMCLOUD](cloud.ibm.com) account and API KEY
 * Terraform version 1.0 or later
 
-## How to run the simple test per region using Terraform Workspace
+## How to run a simple test per region using Terraform Workspace
 ```
 $ export IBMCLOUD_API_KEY=<YOUR IBMCLOUD API KEY>
 $ ./prod_test.sh | tee prod_test.log
