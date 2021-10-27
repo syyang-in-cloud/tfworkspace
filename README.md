@@ -2,7 +2,7 @@
 
 ## Pre-requisite
 
-* [IBMCLOUD](https://cloud.ibm.com/login) account and [API KEY](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui#create_user_key)
+* [IBMCLOUD](https://cloud.ibm.com/login) [account](https://cloud.ibm.com/docs/account?topic=account-account-getting-started) and [API KEY](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui#create_user_key)
 * Terraform version 1.0 or later
 
 ## How to run a simple test per region using Terraform Workspace
