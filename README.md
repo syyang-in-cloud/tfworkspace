@@ -1,6 +1,12 @@
 # tfworkspace practice
 
+## Pre-requisite
+
+* [IBMCLOUD](cloud.ibm.com) account and API KEY
+* Terraform version 1.0 or later
+
 ```
+$ export IBMCLOUD_API_KEY=<YOUR IBMCLOUD API KEY>
 $ ./prod_test.sh | tee prod_test.log
 us-south
 Created and switched to workspace "us-south"!
