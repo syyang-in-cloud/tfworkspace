@@ -111,7 +111,7 @@ resource "ibm_is_subnet" "subnet2" {
 # the end of 5. Choose a profile and an image to create a Virtual Server Instance (VSI)
 
 data ibm_is_image "ubuntu-18-04-5" {
-  name = "ibm-ubuntu-16-04-5-minimal-amd64-1"
+  name = "ibm-ubuntu-18-04-5-minimal-amd64-1"
 }
 
 # 6. Create VPC VSIs.
