@@ -34,7 +34,7 @@ resource "ibm_is_vpc" "this" {
 }
 
 resource ibm_is_subnet "this" {
-  name                     = "${var.prefix}-subnet"
+  name                     = "${var.prefix}-${var.region}-${random_id.this.hex}-subnet"
   zone                     = data.ibm_is_zones.this.zones[0]
   vpc                      = ibm_is_vpc.this.id
   total_ipv4_address_count = var.total_ipv4_address_count
@@ -84,7 +84,7 @@ data ibm_is_image "ubuntu-18-04-5" {
 resource "ibm_is_instance" "this" {
   depends_on = [ibm_is_security_group_rule.ssh]
 
-  name      = "${var.prefix}-instance"
+  name      = "${var.prefix}-${var.region}-${random_id.this.hex}-instance"
   vpc       = ibm_is_vpc.this.id
   zone      = data.ibm_is_zones.this.zones[0]
   keys      = [ibm_is_ssh_key.this.id]
@@ -97,7 +97,7 @@ resource "ibm_is_instance" "this" {
 }
 
 resource ibm_is_floating_ip "this" {
-  name   = "${var.prefix}-fip"
+  name   = "${var.prefix}-${var.region}-${random_id.this.hex}-fip"
   target = ibm_is_instance.this.primary_network_interface[0].id
 }
 
