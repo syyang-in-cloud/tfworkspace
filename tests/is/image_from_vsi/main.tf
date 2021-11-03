@@ -116,7 +116,7 @@ resource null_resource "ssh_this_fip" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/user_data.sh"
+    source      = "${path.module}/shell/user_data.sh"
     destination = "user_data.sh"
   }
 
@@ -126,6 +126,10 @@ resource null_resource "ssh_this_fip" {
       "bash ./user_data.sh"
     ]
   }
+
+  #provisioner "local-exec" {
+  #  command = "ansible-playbook -i ${path.module}/ansible/playbook.yml"
+  #}
 }
 
 resource ibm_is_image "from_vsi" {
