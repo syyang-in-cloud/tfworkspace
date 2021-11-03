@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # ./prod_test.sh | tee prod_test.log
 #IBM_PROD_REGION=('us-south' 'us-east' 'au-syd' 'br-sao' 'ca-tor' 'eu-de' 'eu-gb' 'jp-osa')
-IBM_PROD_REGION=('us-south')
+#IBM_PROD_REGION=('us-east')
+IBM_PROD_REGION=('jp-osa')
 
-for i in {1..100}
+for i in {1..1}
 do
 
 	echo "Trial: $i"
