@@ -90,7 +90,7 @@ resource "ibm_is_instance" "this" {
   keys      = [ibm_is_ssh_key.this.id]
   image     = data.ibm_is_image.ubuntu-18-04-5.id
   profile   = var.profile
-  #user_data = file("${path.module}/user_data.sh")
+  #user_data = file("${path.module}/shell/user_data.sh")
 
   primary_network_interface {
     subnet = ibm_is_subnet.this.id
