@@ -142,3 +142,42 @@ resource ibm_is_image "from_vsi" {
     create = "45m"
   }
 }
+
+resource "ibm_is_instance" "one_from_the_image" {
+  depends_on = [ibm_is_security_group_rule.ssh]
+
+  name      = "${var.prefix}-${var.region}-${random_id.this.hex}-from-the-image"
+  vpc       = ibm_is_vpc.this.id
+  zone      = data.ibm_is_zones.this.zones[0]
+  keys      = [ibm_is_ssh_key.this.id]
+  image     = ibm_is_image.from_vsi.id
+  profile   = var.profile
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.this.id
+  }
+}
+resource ibm_is_floating_ip "one_from_the_image" {
+  name   = "${var.prefix}-${var.region}-${random_id.this.hex}-from-the-image"
+  target = ibm_is_instance.one_from_the_image.primary_network_interface[0].id
+}
+
+resource null_resource "ssh_one_from_the_image" {
+  triggers = {
+    fip_instance_id = ibm_is_instance.one_from_the_image.id
+  }
+
+  connection {
+    type = "ssh"
+    user = "ubuntu"
+    host = ibm_is_floating_ip.one_from_the_image.address
+    private_key = local.ssh_key_private
+    timeout     = "10m"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "echo $(uname -a)",
+      "apt list | grep unattended"
+    ]
+  }
+}
