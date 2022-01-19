@@ -5,6 +5,8 @@
 * [IBMCLOUD](https://cloud.ibm.com/login) [account](https://cloud.ibm.com/docs/account?topic=account-account-getting-started) and [API KEY](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui#create_user_key)
 * [Terraform](https://www.terraform.io/downloads.html) version 1.0 or later
 
+* Or you can take the dev environment from https://github.com/ibm-xaas/dev-env; see the file : https://github.com/syyang-in-cloud/tfworkspace/blob/main/docker-compose.yml
+
 ## How to run a simple test per region using Terraform Workspace
 ```
 $ export IBMCLOUD_API_KEY=<YOUR IBMCLOUD API KEY>
