@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# ./tg_prod_test.sh | tee prod_test.log
+# ./prod_test.sh | tee prod_test.log
 #
 #IBM_PROD_REGION=('us-south' 'us-east' 'au-syd' 'br-sao' 'ca-tor' 'eu-de' 'eu-gb' 'jp-osa')
-# IBM_PROD_REGION=('us-south' 'jp-osa')
+#IBM_PROD_REGION=('us-south' 'us-east')
 IBM_PROD_REGION=('us-south')
 
 for region in "${IBM_PROD_REGION[@]}"

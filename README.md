@@ -7,6 +7,88 @@
 
 * Or you can take the dev environment from https://github.com/ibm-xaas/dev-env; see the file : https://github.com/syyang-in-cloud/tfworkspace/blob/main/docker-compose.yml
 
+## Docker based testing
+```
+ubuntu@ubuntu-jenkins:/voljenkins/test/github/tfworkspace$ docker-compose run tfworkspace
+ubuntu@5a4129962bd8:/tfworkspace$ ls
+LICENSE  README.md  docker-compose.yml  tests
+ubuntu@5a4129962bd8:/tfworkspace$ cd tests/is/vpc/
+ubuntu@5a4129962bd8:/tfworkspace/tests/is/vpc$ ./tg_prod_test.sh | tee tg_prod_test.log
+us-south
+[INFO] Getting version from tgenv-version-name
+[INFO] TGENV_VERSION is 0.35.20
+Created and switched to workspace "us-south"!
+
+You're now on a new, empty workspace. Workspaces isolate their state,
+so if you run "terraform plan" Terraform will not see any existing state
+for this configuration.
+us-south
+[INFO] Getting version from tgenv-version-name
+[INFO] TGENV_VERSION is 0.35.20
+[INFO] Getting version from tgenv-version-name
+[INFO] TGENV_VERSION is 0.35.20
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of ibm-cloud/ibm from the dependency lock file
+- Reusing previous version of hashicorp/random from the dependency lock file
+- Using previously-installed hashicorp/random v3.1.0
+- Using previously-installed ibm-cloud/ibm v1.37.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+[INFO] Getting version from tgenv-version-name
+[INFO] TGENV_VERSION is 0.35.20
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # ibm_is_vpc.this will be created
+  + resource "ibm_is_vpc" "this" {
+      + address_prefix_management   = "auto"
+      + classic_access              = false
+      + crn                         = (known after apply)
+      + cse_source_addresses        = (known after apply)
+      + default_network_acl         = (known after apply)
+      + default_network_acl_crn     = (known after apply)
+      + default_network_acl_name    = (known after apply)
+      + default_routing_table       = (known after apply)
+      + default_routing_table_name  = (known after apply)
+      + default_security_group      = (known after apply)
+      + default_security_group_crn  = (known after apply)
+      + default_security_group_name = (known after apply)
+      + id                          = (known after apply)
+      + name                        = (known after apply)
+      + resource_controller_url     = (known after apply)
+      + resource_crn                = (known after apply)
+      + resource_group              = "bc26f31742114cd1832097a1db493ac0"
+      + resource_group_name         = (known after apply)
+      + resource_name               = (known after apply)
+      + resource_status             = (known after apply)
+      + security_group              = (known after apply)
+      + status                      = (known after apply)
+      + subnets                     = (known after apply)
+      + tags                        = (known after apply)
+    }
+```
+
+
+
+
+
+
+
 ## How to run a simple test per region using Terraform Workspace
 ```
 $ export IBMCLOUD_API_KEY=<YOUR IBMCLOUD API KEY>
