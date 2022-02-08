@@ -14,11 +14,11 @@ variable "ibm_resource_group" {
 }
 
 variable "count_mysql" {
-  default = 2
+  default = 1
   description = "the number of mysql instances"
 }
 
 variable "count_appserv" {
-  default = 2
+  default = 1
   description = "the number of appserv instances"
 }

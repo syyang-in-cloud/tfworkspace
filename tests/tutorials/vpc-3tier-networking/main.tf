@@ -114,6 +114,16 @@ data ibm_is_image "ubuntu-18-04-5" {
   name = "ibm-ubuntu-18-04-5-minimal-amd64-1"
 }
 
+data ibm_is_image "mysql" {
+  name = "ubuntu-focal-docker-mysql-0-1-0-54f0"
+  visibility = "private"
+}
+
+data ibm_is_image "wordpress" {
+  name = "ubuntu-focal-docker-wordpress-0-1-0-42e4"
+  visibility = "private"
+}
+
 # 6. Create VPC VSIs.
 # 6.1 the security group for the VSIs: app_sg
 
@@ -183,7 +193,7 @@ resource "ibm_is_instance" "mysql" {
   count   = var.count_mysql
   name    = "${var.prefix}-${var.region}-${random_id.this.hex}-in-mysql${count.index}"
   #image   = "r006-9de77234-3189-42f8-982d-f2266477cfe0"
-  image   = data.ibm_is_image.ubuntu-18-04-5.id
+  image   = data.ibm_is_image.mysql.id
   profile = "bx2-4x16"
   vpc     = ibm_is_vpc.this.id
   zone    = data.ibm_is_zones.this.zones[0]
@@ -217,7 +227,7 @@ resource "ibm_is_instance" "appserv" {
   count   = var.count_appserv
   name    = "${var.prefix}-${var.region}-${random_id.this.hex}-in-appserv${count.index}"
   #image   = "r006-9de77234-3189-42f8-982d-f2266477cfe0"
-  image   = data.ibm_is_image.ubuntu-18-04-5.id
+  image   = data.ibm_is_image.wordpress.id
   profile = "bx2-4x16"
   vpc     = ibm_is_vpc.this.id
   zone    = data.ibm_is_zones.this.zones[0]

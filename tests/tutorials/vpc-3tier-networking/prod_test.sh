@@ -2,7 +2,8 @@
 # ./prod_test.sh | tee prod_test.log
 #IBM_PROD_REGION=('us-south' 'us-east' 'au-syd' 'br-sao' 'ca-tor' 'eu-de' 'eu-gb' 'jp-osa')
 #IBM_PROD_REGION=('us-east')
-IBM_PROD_REGION=('jp-osa')
+#IBM_PROD_REGION=('jp-osa')
+IBM_PROD_REGION=('us-south')
 
 for i in {1..1}
 do
